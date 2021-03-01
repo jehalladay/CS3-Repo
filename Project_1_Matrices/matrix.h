@@ -7,9 +7,11 @@
 
 using namespace std;
 
+const int MaxElements = 25;
+
 class Matrix {
     private:
-        int elements[25], filled, M, N, size;
+        int elements[MaxElements], filled, M, N, size;
         int el(int, int);
     public:
         // constructors

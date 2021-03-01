@@ -7,6 +7,7 @@
 
 using namespace std;
 
+
 Matrix::Matrix() {
     M = 1;
     N = 3;
@@ -27,10 +28,6 @@ Matrix::Matrix(int rows, int columns) {
     }
 }
 
-Matrix::~Matrix() {
-    delete[] elements;
-}
-
 
 int Matrix::el(int row, int column) {
     return elements[row*N+column];
@@ -42,29 +39,44 @@ int Matrix::element(int row, int column) {
         cout << "Cannot specify row/column larger than number of rows/columns or less than or equal to 0" << endl;
         throw;
     }
+
     return el(row-1, column-1);
 }
-
 
 
 void Matrix::test() {
     cout << "Hello Matrix" << endl;
 }
 
+
 int Matrix::rows() {
     return M;
 }
+
 
 int Matrix::columns() {
     return N;
 }
 
+
 int Matrix::get_filled() {
     return filled;
 }
 
+
 int Matrix::get_size() {
     return size;
+}
+
+
+void Matrix::fill(int val) {
+    if(filled < size) {
+        elements[filled] = val;
+        filled++;
+    } else {
+        cout << "cannot pack a filled matrix" << endl;
+        throw;
+    }
 }
 
 Matrix operator +(Matrix first, Matrix second) {
@@ -86,6 +98,7 @@ Matrix operator +(Matrix first, Matrix second) {
     return newMatrix;
 }
 
+
 Matrix operator -(Matrix first, Matrix second) {
     Matrix newMatrix(first.M, first.N);
 
@@ -105,8 +118,9 @@ Matrix operator -(Matrix first, Matrix second) {
     return newMatrix;
 }
 
+
 Matrix operator *(Matrix first, Matrix second) {
-    int M = first.M, N = second.N, current = 0, sum = 0, i = 0, j = 0, k = 0;
+    int M = first.M, N = second.N, sum = 0, i = 0, j = 0, k = 0;
     Matrix newMatrix(M, N);
 
     if(first.N != second.M) {
@@ -125,6 +139,8 @@ Matrix operator *(Matrix first, Matrix second) {
         newMatrix.elements[e] = sum;
         sum = 0;
     }
+
+    newMatrix.filled = newMatrix.size;
 
     return newMatrix;
 }
@@ -154,6 +170,7 @@ Matrix operator *(Matrix first, int second) {
 
     return newMatrix;
 }
+
 
 Matrix operator *(double first, Matrix second) {
     Matrix newMatrix(second.M, second.N);
@@ -190,7 +207,6 @@ istream& operator >>(istream &ins, Matrix &matrix) {
             matrix.elements[matrix.filled] = temp;
             matrix.filled++;
         }
-        
     } else {
         cout << "Cannot fill a packed matrix" << endl;
         throw;
@@ -208,6 +224,7 @@ ostream& operator <<(ostream &ofs, Matrix matrix) {
     }
 
     for(int i = 0; i < size; i++) {
+        // ofs << "#" << i << ": ";
         ofs << matrix.elements[i];
 
         if((i+1)%columns == 0) {
@@ -216,6 +233,7 @@ ostream& operator <<(ostream &ofs, Matrix matrix) {
             ofs << "\t";
         }
     }
+
 
     return ofs;
 }

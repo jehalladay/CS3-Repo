@@ -21,15 +21,14 @@ class Matrix {
         int columns();
         int get_filled();
         int get_size();
+        void fill(int);
         int element(int, int);
+        // void insert(int, int, int);
         // Matrix row(int);
         // Matrix col(int);
 
         // testing functions
         void test();
-        
-        // destructor
-        ~Matrix();
         
         // overloaded operators
         friend Matrix operator +(Matrix first, Matrix second);

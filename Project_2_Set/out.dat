@@ -1,0 +1,26 @@
+The universal set is: 
+ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
+The vowel set is: 
+ A       E       I           O           U          
+
+The myname set is: 
+ A     D E     H   J   L M           S           Y  
+
+The union of vowel and myname is: 
+ A     D E     H I J   L M   O       S   U       Y  
+
+The intersection of vowel and myname is: 
+ A       E                                          
+
+The set of consonants is: 
+   B C D   F G H   J K L M N   P Q R S T   V W X Y Z
+
+The sets vowel and myname are not equal
+The sets vowel and vowel are equal
+
+The set vowel is not a subset of myname
+The set vowel is a subset of universal
+
+The cardinality of vowel is: 5
+The cardinality of consonant is: 21

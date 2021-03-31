@@ -33,12 +33,29 @@ int main() {
     // 4) Print the list of edges that make up the 
     //      Minimum Spanning Tree for G
 
-    out << "The Minimum Spanning Tree(MST) of G consists of the edges: " << endl << endl;
+    out << "The Minimum Spanning Tree(MST) of G starting at the vertex A consists of the edges: " << endl << endl;
     MST.print_edges(out);
 
     // 5) Print the total weight of the Minimum Spanning Tree
 
     out << endl << "The Total Weight of the MST for G is: " << MST.total_weight() << endl;
+
+
+
+    // 6) Extra Credit: Create an MST starting from the vertex M
+
+    MST = G.MST('M');
+
+    // 7) Print the list of edges that make up the 
+    //      Minimum Spanning Tree for G
+
+    out << "The Minimum Spanning Tree(MST) of G starting at the vertex M consists of the edges: " << endl << endl;
+    MST.print_edges(out);
+
+    // 8) Print the total weight of the Minimum Spanning Tree
+
+    out << endl << "The Total Weight of the MST for G is: " << MST.total_weight() << endl;
+
 
     return 0;
 }

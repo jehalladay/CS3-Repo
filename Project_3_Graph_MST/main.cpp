@@ -38,7 +38,7 @@ int main() {
 
     // 5) Print the total weight of the Minimum Spanning Tree
 
-    out << endl << "The Total Weight of the MST for G is: " << MST.total_weight() << endl;
+    out << endl << "The Total Weight of the MST for G is: " << MST.total_weight() << endl << endl;
 
 
 

@@ -3,68 +3,35 @@
 #include <iomanip>
 #include <string>
 
-#include "graph.h"
+#include "bst.h"
 
 using namespace std;
 
-void read_file(string source, Graph &G);
+void read_file(string source, Tree &T);
 
 int main() {
     string source = "in.dat";
-    Graph G(13, 'A'), MST;
+    Tree t;
     ofstream out("out.dat");
-    
 
-    // 1) Read edges from file into graph
+    read_file(source, t);
 
-    read_file(source, G);
-
-    // 2) Print the two dimensional adjacency matrix 
-    //      using row and column titles
-
-    out << "The Adjacency Matrix of Graph G" << endl << endl;;
-    out << G;
-
-    // 3) Use Prim's Algorithm to compute the
-    //      Minimum Spanning Tree of Graph G
-    
-    MST = G.MST('A');
-
-    // 4) Print the list of edges that make up the 
-    //      Minimum Spanning Tree for G
-
-    out << "The Minimum Spanning Tree(MST) of G starting at the vertex A consists of the edges: " << endl << endl;
-    MST.print_edges(out);
-
-    // 5) Print the total weight of the Minimum Spanning Tree
-
-    out << endl << "The Total Weight of the MST for G is: " << MST.total_weight() << endl << endl;
-
-
-
-    // 6) Extra Credit: Create an MST starting from the vertex M
-
-    MST = G.MST('M');
-
-    // 7) Print the list of edges that make up the 
-    //      Minimum Spanning Tree for G
-
-    out << "The Minimum Spanning Tree(MST) of G starting at the vertex M consists of the edges: " << endl << endl;
-    MST.print_edges(out);
-
-    // 8) Print the total weight of the Minimum Spanning Tree
-
-    out << endl << "The Total Weight of the MST for G is: " << MST.total_weight() << endl;
+    t.inorder(out);
 
 
     return 0;
 }
 
 
-void read_file(string source, Graph &graph) {
+void read_file(string source, Tree &tree) {
     ifstream input_file(source);
+    int data = -1;
 
     while(!input_file.eof()) { 
-        input_file >> graph;
+        input_file >> data;
+        if(data != -1) {
+            tree.insert(data);
+        }
+        data = -1;
     }
 }
